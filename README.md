@@ -1,4 +1,10 @@
 # Triangle Centers
-A graphics animation of Triangle Centers geometry built in PyQt5.
 
-Inspired by this [Numberphile video](https://www.youtube.com/watch?v=wVH4MS6v23U)
+A PyQt5 program to visualize 5 classical triangle centers and the Euler Line by moving the vertices.
+
+Inspired by this [video](https://www.youtube.com/watch?v=wVH4MS6v23U) with Zvezdelina Stankova. 
+
+Core Concepts: 
+- Graphics View Framework. 
+- Cartesian coordinates
+- Concise, efficient programming
