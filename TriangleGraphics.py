@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-QPointF.__matmul__ = lambda a, b: a.x() ** b + a.y() ** b
 
 COLORS = ('Red', 'Lime', 'Blue', 'Gold', '#8533ff')
 CENTERS = ('Centroid', 'Circumcenter', 'Orthocenter', 'Incenter', 'Nine-point center')
@@ -20,7 +19,7 @@ class Anchor(QGraphicsEllipseItem):
         self.setCursor(Qt.SizeAllCursor)
         self.label = QGraphicsSimpleTextItem(self.parentItem())
         self.label.setBrush(Qt.magenta)
-        self.label.setFont(QFont('Helvetica', 14))
+        font = self.label.font(); font.setPointSize(14); self.label.setFont(font)
         self.label.setZValue(1)
         self.label.hide()
         
@@ -87,7 +86,7 @@ class Triangle(QGraphicsPolygonItem):
             lines.append(line)
         return lines
 
-    def centerItem(self, color, state=True):
+    def centerItem(self, color, state):
         color = QColor(color)
         ellipse = QGraphicsEllipseItem(-10, -10, 20, 20, self)
         ellipse.setPen(QPen(color, 3))
@@ -196,3 +195,5 @@ class Triangle(QGraphicsPolygonItem):
         path.addPolygon(self.polygon())
         path.closeSubpath()
         return stroker.createStroke(path)
+
+QPointF.__matmul__ = lambda a, b: a.x() ** b + a.y() ** b
