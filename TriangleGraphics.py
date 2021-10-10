@@ -101,12 +101,12 @@ class Triangle(QGraphicsPolygonItem):
         A, B, C = points
         sides = [QLineF(B, C), QLineF(C, A), QLineF(A, B)]
 
-        centroid = (A + B + C) / 3 #sum(points, QPointF()) / 3
+        centroid = (A + B + C) / 3
         self.centers['Centroid'].setPos(centroid)
         for i, v in enumerate(self.lines['Medians']):
             v.setLine(QLineF(points[i], sides[i].center()))
         
-        circum = QPointF( #ax, ay, bx, by, cx, cy = sum([(p.x(), p.y()) for p in points], ())
+        circum = QPointF(
             A @ 2 * (B - C).y() + B @ 2 * (C - A).y() + C @ 2 * (A - B).y(),
             A @ 2 * (C - B).x() + B @ 2 * (A - C).x() + C @ 2 * (B - A).x()
             ) / (2 * (A.x() * (B - C).y() + B.x() * (C - A).y() + C.x() * (A - B).y()) or 1e-2)
