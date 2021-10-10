@@ -47,7 +47,7 @@ class TriangleCenters(QWidget):
         grid.addWidget(QCheckBox('Euler Line', toggled=self.triangle.euler.setVisible,
                                  styleSheet='font-size: 16pt; font-weight: bold'), 6, 0, 1, 3)
         grid.setRowStretch(7, 8)
-        grid.addWidget(QCheckBox('Show Angles', toggled=self.toggle_angles), 8, 0, 1, 3, Qt.AlignBottom)
+        grid.addWidget(QCheckBox('Angles', toggled=self.toggle_angles), 8, 0, 1, 3)
         grid.addWidget(view, 0, 3, 9, 1)
 
         self.equilateral()
@@ -64,9 +64,8 @@ class TriangleCenters(QWidget):
 
     def equilateral(self):
         for i, v in enumerate(self.triangle.anchors):
-            x = 220 * math.sin(math.radians(120 * i + 60))
-            y = 220 * math.cos(math.radians(120 * i + 60))
-            v.setPos(x, y)
+            v.setPos(220 * math.sin(math.radians(120 * i + 60)),
+                     220 * math.cos(math.radians(120 * i + 60)))
         self.update_triangle()
         
     def right(self):
